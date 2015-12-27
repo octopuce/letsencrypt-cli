@@ -1,0 +1,12 @@
+db:
+    user: "missing_info"
+    pass: "missing_info"
+    dbname: "missing_info"
+    host: "localhost"
+    driver: "mysql"
+api: "https://acme-staging.api.letsencrypt.org"
+challenge:
+    type:  http,
+    config:
+        # The target to store the file
+        doc-root:  "/tmp/"
