@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "octopuce/acmephpc": "*",
+        "octopuce/acmephpc": "dev-master",
         "symfony/console": "*",
         "symfony/yaml": "*"
     },
@@ -25,7 +25,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "/home/alban/code/acmephpc"
+            "url": "https://github.com/albancrommer/acmephpc"
         }
     ],
     "minimum-stability": "dev"

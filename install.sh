@@ -39,13 +39,14 @@ if ! file_exists "${APP_PATH}/vendor/autoload.php"; then
         if option_enabled INSTALL_COMPOSER ; then 
             
             # install_composer the ... ugly way
-            [ -n bin_path "curl" ] && die 1 "Missing Curl."
+            [ -n `bin_path "curl"` ] && die 1 "Missing Curl."
 
             # install_composer the ... ugly way
             $(bin_path curl) -sS "https://getcomposer.org/installer" | sudo php -- --install-dir=/usr/local/bin
         else 
             die 1 "Missing composer, please refer to https://getcomposer.org/installer" 
         fi
+	COMPOSER=`bin_path composer.phar`
     fi
 
     # run Composer
@@ -112,15 +113,18 @@ if ! file_exists "${APP_PATH}/config.yml" ; then
     if option_enabled MYSQL_IS_CONFIGURED ; then 
         read -e -i "Y" -p "Would you like to patch the config file automatically with database params? [y/N]: " PATCH_CONFIG 
         if option_enabled PATCH_CONFIG ; then 
-            PATCH_CONFIG_RES=` echo $( bin_path php ) "${APP_PATH}/patch_yaml/patch_yaml.php" "${APP_PATH}/config.yml" "$MYSQL_DB_NAME" "$MYSQL_USER_NAME" "$MYSQL_USER_PASSWORD"`
-            echo $PATCH_CONFIG_RES
+            PATCH_CONFIG_RES=`$( bin_path php ) "${APP_PATH}/patch_yaml/patch_yaml.php" "${APP_PATH}/config.yml" "$MYSQL_DB_NAME" "$MYSQL_USER_NAME" "$MYSQL_USER_PASSWORD"`
+            [ 0 -ne $? ] && echo "An error occured while patching configuration : $PATCH_CONFIG_RES"
         fi
     fi
 fi
 
 # Create a local copy of our binary
-ln -s "${APP_PATH}/letsencrypt.php" "/usr/local/bin/letsencrypt"
+if [ ! -L "/usr/local/bin/letsencrypt" ] ; then
+    ln -s "${APP_PATH}/letsencrypt.php" "/usr/local/bin/letsencrypt"
+    echo "Setting up a global 'letsencrypt' command'"
+fi
 
-echo "Installation complete"
+echo "Installation complete. You should be able to use 'letsencrypt help'."
 
 exit_function
