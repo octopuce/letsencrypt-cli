@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "34b9aaf50ae3884d8ea44e4df6ddea00",
-    "content-hash": "0958ddcd146369dc0b2d3d527921a74e",
+    "hash": "879252900931fd5950b1c6fbd36aa617",
+    "content-hash": "7704a709f266382d1aad1682e1c85c24",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -628,8 +628,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "/home/alban/code/acmephpc",
-                "reference": "49fd58cba032666a6da929c46f94c14961867445"
+                "url": "https://github.com/albancrommer/acmephpc.git",
+                "reference": "39a99af16b8ed74408146ceb2238a18d2221b6ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/albancrommer/acmephpc/zipball/39a99af16b8ed74408146ceb2238a18d2221b6ca",
+                "reference": "39a99af16b8ed74408146ceb2238a18d2221b6ca",
+                "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "2.5.2",
@@ -666,7 +672,10 @@
                 "CA",
                 "JWS"
             ],
-            "time": "2015-12-17 21:40:13"
+            "support": {
+                "source": "https://github.com/albancrommer/acmephpc/tree/master"
+            },
+            "time": "2015-12-28 17:52:45"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -855,12 +864,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "2e06a5ccb19dcf9b89f1c6a677a39a8df773635a"
+                "reference": "4e83844dead78e6e90b8b7dff862fa232fa228ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/2e06a5ccb19dcf9b89f1c6a677a39a8df773635a",
-                "reference": "2e06a5ccb19dcf9b89f1c6a677a39a8df773635a",
+                "url": "https://api.github.com/repos/symfony/console/zipball/4e83844dead78e6e90b8b7dff862fa232fa228ad",
+                "reference": "4e83844dead78e6e90b8b7dff862fa232fa228ad",
                 "shasum": ""
             },
             "require": {
@@ -907,7 +916,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2015-12-22 10:25:57"
+            "time": "2015-12-28 13:12:56"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1034,12 +1043,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "ac84cbb98b68a6abbc9f5149eb96ccc7b07b8966"
+                "reference": "cee3fdda8184add20a13eb666295dfd72e8031bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/ac84cbb98b68a6abbc9f5149eb96ccc7b07b8966",
-                "reference": "ac84cbb98b68a6abbc9f5149eb96ccc7b07b8966",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/cee3fdda8184add20a13eb666295dfd72e8031bd",
+                "reference": "cee3fdda8184add20a13eb666295dfd72e8031bd",
                 "shasum": ""
             },
             "require": {
@@ -1075,13 +1084,15 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2015-12-26 13:37:56"
+            "time": "2015-12-28 13:12:56"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "octopuce/acmephpc": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

@@ -21,7 +21,6 @@ run_as_root
 # Capture exit events to execute our exit function 
 trap "exit_function" INT TERM EXIT
 
-
 # @todo: check required packages: PHP-CLI, MYSQL-CLIENT & SERVER
 
 
@@ -59,7 +58,7 @@ if [ -n `bin_path mysqladmin` ] && mysqladmin status >/dev/null 2>&1; then
 
     read -e -i "Y" -p "Would you create the database (user, schema)? [Y/n]: " HANDLE_DB
     
-    # Lets go for SQL
+    # Do we run the SQL install?
     if option_enabled HANDLE_DB ; then
 
         # Attempt to use Debian default auth
@@ -74,6 +73,7 @@ if [ -n `bin_path mysqladmin` ] && mysqladmin status >/dev/null 2>&1; then
         SUFFIX=$(date "+%s")
         MYSQL_USER_PASSWORD=$( $MYSQL_COMMAND -rsNe "select substring( password(CONCAT(NOW(),'$TMP_USER_PASSWORD')),2,16 );")
         MYSQL_IS_CONNECTED=$?
+
         # If connected to SQL, let's go
         if [ 0 -eq $MYSQL_IS_CONNECTED ] ; then 
             MYSQL_DB_NAME="acme_${SUFFIX}"

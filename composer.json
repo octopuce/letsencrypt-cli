@@ -21,6 +21,9 @@
         "symfony/yaml": "*"
     },
     "autoload": {
+        "psr-4": {
+            "Octopuce\\Acme\\Cli\\": "src/Octopuce/Acme/Cli"
+        }
     },
     "repositories": [
         {

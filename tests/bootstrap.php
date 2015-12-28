@@ -1,10 +1,9 @@
 <?php
 
-
-$autoload = require __DIR__.'/vendor/autoload.php';
+define( "APP_PATH",realpath( __DIR__."/../"));
+$autoload = require APP_PATH.'/vendor/autoload.php';
 
 // Load configuration file or attempt to build a new one
-define( "APP_PATH", __DIR__ );
 define( "CONFIG_FILE", APP_PATH."/"."config.yml" );
 if( ! is_file( CONFIG_FILE ) ) {
 

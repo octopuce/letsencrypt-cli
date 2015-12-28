@@ -1,7 +1,10 @@
 #!/usr/bin/php
 <?php 
 
+// All the boilerplate work happens here
 require "bootstrap.php"; 
 
-// Load commands
+// And now we can run the command line tool
+$console->run();
+
 
