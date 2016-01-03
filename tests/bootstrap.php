@@ -4,10 +4,10 @@ define( "APP_PATH",realpath( __DIR__."/../"));
 $autoload = require APP_PATH.'/vendor/autoload.php';
 
 // Load configuration file or attempt to build a new one
-define( "CONFIG_FILE", APP_PATH."/"."config.yml" );
+define( "CONFIG_FILE", APP_PATH."/tests/config.yml" );
 if( ! is_file( CONFIG_FILE ) ) {
 
-    echo "Please run the installer first: './install.sh'.\n";
+    echo "Please create a config.yml file for testing'.\n";
     exit(1);
     
 }
@@ -23,6 +23,7 @@ $params = array(
         'challenge' => $config["challenge"]
     ),
 );
+
 $client = new \Octopuce\Acme\Client($params);
 
 // Build Console
@@ -34,7 +35,7 @@ $console = new Symfony\Component\Console\Application(
 
 $console->add(new \Symfony\Component\Console\Command\HelpCommand());
 $console->add(new \Symfony\Component\Console\Command\ListCommand());
-//$console->add(new \Octopuce\Acme\Cli\Command\Enumerate(null, $client));
+$console->add(new \Octopuce\Acme\Cli\Command\Enumerate(null, $client));
 $console->add(new \Octopuce\Acme\Cli\Command\NewAccount(null, $client));
 $console->add(new \Octopuce\Acme\Cli\Command\NewOwnership(null, $client));
 //$console->add(new \Octopuce\Acme\Cli\Command\ChallengeOwnership(null, $client));

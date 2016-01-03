@@ -9,16 +9,15 @@
 >
     <testsuites>
         <testsuite name="unit">
-            <directory>Octopuce/Tests/Acme</directory>
+            <directory>../src/Octopuce/Tests/Acme</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="false">
-            <directory suffix=".php">src/Octopuce/Acme</directory>
+            <directory suffix=".php">../src/Octopuce/Tests</directory>
             <exclude>
-                <directory suffix=".php">vendor</directory>
-                <directory suffix=".php">tests</directory>
+                <directory>../vendor</directory>
             </exclude>
         </whitelist>
     </filter>
