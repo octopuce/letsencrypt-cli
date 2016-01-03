@@ -7,18 +7,9 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Octopuce\Acme\Client;
+use Octopuce\Acme\Cli\Command;
 
-class NewAccount extends \Symfony\Component\Console\Command\Command {
-
-    /** @var Octopuce\Acme\Client */
-    private $agent;
-
-    public function __construct($name = null, Client $agent) {
-
-        parent::__construct($name);
-
-        $this->agent = $agent;
-    }
+class NewAccount extends Command {
 
     protected function configure() {
 
@@ -36,7 +27,7 @@ class NewAccount extends \Symfony\Component\Console\Command\Command {
         $out = "";
         $email = $input->getArgument("email");
         $tel = $input->getArgument("tel");
-        $res = $this->agent->newAccount($email, $tel);
+        $res = $this->get->newAccount($email, $tel);
         $output->writeln('done');
     }
 

@@ -8,30 +8,39 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Octopuce\Acme\Client;
 
-class Enumerate extends \Symfony\Component\Console\Command\Command {
+class Enumerate extends \Octopuce\Acme\Cli\Command {
 
-    /** @var Octopuce\Acme\Client */
-    private $agent;
-
-    public function __construct($name = null, Client $agent) {
-
-        parent::__construct($name);
-
-        $this->agent = $agent;
-    }
 
     protected function configure() {
 
         $this
-                ->setName('Enumerate')
-                ->setDescription('to be provided')
+                ->setName('test')
+                ->setDescription('Connects to API endpoint')
 
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
 
-        $output->writeln('to be defined');
+        try {
+            /** @var Guzzle\Http\Message\Response */
+            $res = $this->getClient()->enumerate();
+
+            $out = current(current( $res->getHeader("Replay-Nonce") ));
+            if(! is_string($out) || is_null($out) || empty($out)){
+                throw new \Exception("Failed to retrieve a valid answer.");
+            }
+            $returnCode = 0;
+            $returnMessage = $out;
+            
+        } catch (\Exception $e) {
+            $returnCode = 1;
+            $returnMessage = $e->getMessage();
+        }
+        
+        $output->writeln($returnMessage);
+        return $returnCode;
+
     }
 
 }
